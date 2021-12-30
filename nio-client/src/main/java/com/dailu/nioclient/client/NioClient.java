@@ -48,6 +48,7 @@ public class NioClient {
 
 
     public void start() throws IOException {
+        //这种写法不知道为什么不生效
         while (!stop) {
             int readyChannelNum = selector.select();
             if (readyChannelNum > 0) {
@@ -71,6 +72,18 @@ public class NioClient {
                 e.printStackTrace();
             }
         }
+//        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+//        while (!stop) {
+//            byteBuffer.clear();
+//            int read = socketChannel.read(byteBuffer);
+//            if (read == 0 || read == -1) {
+//                continue;
+//            }
+//            byte[] b = new byte[byteBuffer.position()];
+//            byteBuffer.flip();
+//            byteBuffer.get(b);
+//            log.debug("receive message:" + new String(b));
+//        }
     }
 
     private void removeChannel() {

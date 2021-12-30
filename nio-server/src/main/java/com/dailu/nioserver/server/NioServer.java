@@ -69,7 +69,8 @@ public class NioServer {
                     handleConnect(key);
                 } catch (Exception e) {
                     removeChannel(key, (SocketChannel) key.channel());
-                    throw new CustomRuntimeException(e.getMessage(), e);
+//                    throw new CustomRuntimeException(e.getMessage(), e);
+                    log.error(e.getMessage(),e);
                 }
             }
         }
